@@ -8,7 +8,7 @@ let previousCount = 100;
 const tescoDeals = [];
 
 async function start(page) {
-    if (previousCount < 100 || page >= 500) {
+    if (previousCount < 100 || page >= 200) {
         fs.writeFile("./tesco-scraped.json", JSON.stringify(tescoDeals), err => {
             console.log(err);
         });
@@ -29,9 +29,22 @@ async function start(page) {
                 .find("h3 > a")
                 .after("span")
                 .text();
+            const productPrice = $(item)
+                .find(".quantity .content .price .linePrice")
+                .text();
+
+            const productPriceAbbrv = $(item)
+                .find(".quantity .content .price .linePriceAbbr")
+                .text();
+
+            const productSaveAmountText = $(item)
+                .find(".descContent .promo a em")
+                .text();
 
             let tescoDeal = {
-                productName
+                productName,
+                productPrice,
+                productPriceAbbrv
             };
 
             tescoDeals.push(tescoDeal);
