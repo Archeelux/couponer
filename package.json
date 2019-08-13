@@ -1,17 +1,36 @@
 {
-  "name": "couponer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "cheerio": "^1.0.0-rc.3",
-    "puppeteer": "^1.18.1"
-  }
+    "name": "couponer",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "buildDev": "rm -rf dist && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
+        "buildProd": "rm -rf dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
+        "start": "node ./dist/server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.19.0",
+        "cheerio": "^1.0.0-rc.3",
+        "date-fns": "^1.30.1",
+        "dayjs": "^1.8.14",
+        "express": "^4.17.1",
+        "hbs": "^4.0.4",
+        "lodash": "^4.17.11",
+        "puppeteer": "^1.18.1"
+    },
+    "devDependencies": {
+        "css-loader": "^3.0.0",
+        "file-loader": "^4.0.0",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.35.2",
+        "webpack-cli": "^3.3.5",
+        "webpack-dev-middleware": "^3.7.0",
+        "webpack-hot-middleware": "^2.25.0",
+        "webpack-node-externals": "^1.7.2"
+    }
 }
